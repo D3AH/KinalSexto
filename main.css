@@ -1,0 +1,115 @@
+/*General*/
+
+body {
+	margin: 0;
+	font-family: 'Lato';
+}
+
+/*Navbar*/
+
+navbar {
+	/*Layout*/
+	margin: 0px;
+	padding: 15px;
+	padding-left: 10px;
+	padding-right: 10px;
+	display: flex;
+	/*Text*/
+	font-weight: 600;
+	/*Color*/
+	background-color: orange;
+}
+
+@media screen and (min-width: 768px)  {
+	navbar {
+		padding-left: 120px;
+		padding-right: 120px;
+	}
+}
+
+navbar ul {
+	display: flex;
+	list-style: none;
+	margin-left: auto;
+}
+
+navbar ul li {
+	margin-left: 10px;
+	margin-right: 10px;
+}
+
+@media screen and (min-width: 768px)  {
+	navbar ul .inicio {
+		left: 0;
+		margin-left: 125px;
+		position: absolute;
+	}
+}
+
+navbar ul li a {
+	color: white;
+	font-size: 1rem;
+	text-decoration: none;
+}
+
+/*Main content*/
+
+main {
+	padding-left: 10px;
+	padding-right: 10px;
+	padding-bottom: 40px;
+}
+
+@media screen and (min-width: 768px)  {
+	main {
+		padding-left: 120px;
+		padding-right: 120px;
+	}
+}
+
+
+.bar {
+	display: inline-flex;
+	width: 100%;
+	overflow: scroll;
+	overflow-y: hidden;
+	overflow-x: auto;
+}
+
+.bar article {
+	/*Layout*/
+	margin: 10px;
+	padding: 10px;
+	/*Text*/
+	text-align: center;
+	/*Color*/
+	background-color: #f1f1f1;
+}
+
+.bar article img {
+	width: 150px;
+	margin: 15px;
+}
+
+.bar article p {
+	/*Text*/
+	color: #181911;
+}
+
+/*Footer*/
+
+footer {
+	/*Layout*/
+	padding-top: 20px;
+	padding-bottom: 20px;
+	/*Text*/
+	text-align: center;
+	/*Color*/
+	color: #F3EAEA;
+	background-color: #242429;
+}
+
+a {
+	text-decoration: none;
+	color: #FFA500;
+}
