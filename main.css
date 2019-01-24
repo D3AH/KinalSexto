@@ -1,8 +1,17 @@
+
+/*Variables*/
+:root {
+  --main-color: #FFA500;
+  --light-color: #f1f1f1;
+  --dark-color: #CE005A;
+}
+
 /*General*/
 
 body {
 	margin: 0;
 	font-family: 'Lato';
+	background: linear-gradient(to left, #FF512F , #DD2476);
 }
 
 /*Navbar*/
@@ -13,11 +22,13 @@ navbar {
 	padding: 15px;
 	padding-left: 10px;
 	padding-right: 10px;
+	/*Nueva propiedad*/
 	display: flex;
 	/*Text*/
+	/*Nueva propiedad*/
 	font-weight: 600;
 	/*Color*/
-	background-color: orange;
+	background-color: var(--main-color);
 }
 
 @media screen and (min-width: 768px)  {
@@ -40,8 +51,10 @@ navbar ul li {
 
 @media screen and (min-width: 768px)  {
 	navbar ul .inicio {
+		/*Nueva propiedad*/
 		left: 0;
 		margin-left: 125px;
+		/*Nueva propiedad*/
 		position: absolute;
 	}
 }
@@ -51,12 +64,13 @@ navbar ul li a {
 	font-size: 1rem;
 	text-decoration: none;
 	padding: 8px;
+	/*Nueva propiedad*/
 	border-radius: 15px
 }
 
 navbar ul li a:hover {
 	color: #181911;
-	background-color: #f1f1f1;
+	background-color: var(--light-color);
 }
 
 /*Main content*/
@@ -65,6 +79,7 @@ main {
 	padding-left: 10px;
 	padding-right: 10px;
 	padding-bottom: 40px;
+	color: white;
 }
 
 @media screen and (min-width: 768px)  {
@@ -90,7 +105,10 @@ main {
 	/*Text*/
 	text-align: center;
 	/*Color*/
-	background-color: #f1f1f1;
+	/*background-color: var(--dark-color);*/
+	background-color: #f2ffff;
+	/*Border*/
+	border-radius: 10px;
 }
 
 .bar article img {
@@ -118,5 +136,78 @@ footer {
 
 a {
 	text-decoration: none;
-	color: #FFA500;
+	color: var(--main-color);
+}
+
+/*
+
+	*******  LOGIN  *******
+
+*/
+
+.login {
+	background-color: var(--main-color);
+	padding: auto;
+}
+
+.login .form-container {
+	/*Layout*/
+	width: 60%;
+	margin-right: auto;
+	margin-left: auto;
+	margin-top: 50px;
+	padding: 50px;
+	/*Color*/
+	background-color: white;
+	/*Text*/
+	text-align: center;
+}
+
+.login .form-container form {
+	text-align: left;
+	display: grid;
+}
+
+.login .form-container form input {
+	margin-top: 10px;
+	border-radius: 5px;
+	border: 0;
+	height: 1.8rem;
+	background-color: var(--light-color);
+	padding-left: 10px;
+	font-weight: bold;
+}
+
+.login .form-container form input:focus {
+	outline: none;
+  	box-shadow: 0.2rem 0.2rem 1rem #D7D3DE;
+  	height: 2rem;
+  	font-size: 1rem;
+}
+
+.login .form-container form input[type="submit"] {
+	padding: 10px;
+	height: 3rem;
+	font-size: 1rem;
+}
+
+.login .form-container form input[type="submit"]:hover {
+	background-color: var(--main-color);
+	color: white;
+}
+
+@media screen and (min-width: 680px)  {
+	.login .form-container {
+		/*Layout*/
+		width: 50%;
+	}
+}
+
+@media screen and (min-width: 900px)  {
+	.login .form-container {
+		/*Layout*/
+		width: 40%;
+		margin-right: auto;
+		margin-left: auto;
+	}
 }

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div class="tile">
+		<article>
+			<img src="img/cachorro.jpg" height="100">
+		</article>
+		<div class="text">
+			<h5>Titulo</h5>
+			<h6>Descripcion</h6>
+		</div>
+	</div>
+	<style>
+		.tile {
+		  position: relative;
+		}
+		article {
+			background-color: red;
+			width: 20%;
+			margin: 30px;
+		}
+
+		article img {
+			width: 100%;
+			height: auto;
+		}
+
+		.text {
+			position: absolute;
+			top: 0;
+			bottom: 0;
+			left: 0;
+			right: 0;
+			height: 100%;
+			width: 100%;
+			opacity: 0;
+			transition: .5s ease;
+			text-align: center;
+		}
+
+		.tile:hover .text {
+		  opacity: 0.8;
+		}
+	</style>
+</body>
+</html>
