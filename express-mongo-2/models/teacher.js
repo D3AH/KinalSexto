@@ -4,10 +4,22 @@ var mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
 var TeacherSchema = Schema({
-    name: String,
-    surname: String,
-    email: String,
-    password: String,
+    name: {
+        type: String,
+        required: [true, 'The name is required.']
+    },
+    surname: {
+        type: String,
+        required: [true, 'The surname is required.']
+    },
+    email: {
+        type: String,
+        required: [true, 'The email is required.']
+    },
+    password: {
+        type: String,
+        required: [true, 'The password is required.']
+    },
     role: String
 });
 
