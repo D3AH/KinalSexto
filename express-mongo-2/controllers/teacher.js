@@ -6,6 +6,7 @@ var bcrypt = require('bcrypt-nodejs');
 function saveTeacher(req, res) {
     var params = req.body;
     var teacher = new Teacher(params);
+    teacher.role = 'ROLE_TEACHER';
 
     // Check if it contains errors.
     if (!teacher.validateSync()) {
@@ -32,7 +33,7 @@ function saveTeacher(req, res) {
     } else {
         // In case of validation error
         console.log(teacher.validateSync().message);
-        res.status(502).send('Not accept null values.');
+        res.status(502).send('Not accept null values. ' + teacher.validateSync().message);
     }
 
     res.status(200);
@@ -43,7 +44,7 @@ function loginTeacher(req, res) {
     var email = params.email;
     var password = params.password;
 
-    res.status(200).send({ message: 'Login' })
+    res.status(200).send({ message: 'Login' });
 }
 
 function pruebas(req, res) {
