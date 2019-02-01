@@ -40,11 +40,31 @@ function saveTeacher(req, res) {
 }
 
 function loginTeacher(req, res) {
-    var params = req.today;
+    var params = req.body;
     var email = params.email;
     var password = params.password;
 
-    res.status(200).send({ message: 'Login' });
+    Teacher.findOne({ email: email.toLowerCase() }, (err, teacher) => {
+        if(teacher) {
+            bcrypt.compare(password, teacher.password, (err, check) => {
+                check ? res.status(200).send(teacher) : res.status(500).send({ message: 'Incorrect authentication.' });
+            });
+        } else {
+            console.log(teacher);
+            res.status(500).send({ message: 'User not exist.' });
+        }
+    })
+    .catch((err) => {
+        res.status(500).send({ message: 'ERROR in login.' })
+    })
+}
+
+function listTeacher(req, res) {
+    Teacher.find({/* All */}, (err, teachers) => {
+        res.status(200).send(teachers);
+    }).catch((err) => {
+        res.status(500).send({ message: 'ERROR listing teachers.' })
+    })
 }
 
 function pruebas(req, res) {
@@ -54,5 +74,6 @@ function pruebas(req, res) {
 module.exports = {
     pruebas,
     saveTeacher,
-    loginTeacher
+    loginTeacher,
+    listTeacher
 };
