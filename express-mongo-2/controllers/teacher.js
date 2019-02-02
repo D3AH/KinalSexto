@@ -1,8 +1,11 @@
 'use strict';
 
 var debug = require('debug');
-debug.enable('*');
-var error = debug('teacher:controller');
+var config = require('../config');
+
+debug.enable(config.DEBUG);
+
+var consoleError = debug('teacher:controller');
 
 var Teacher = require('../models/teacher');
 var bcrypt = require('bcrypt-nodejs');
@@ -65,6 +68,7 @@ function loginTeacher(req, res) {
 
 function listTeacher(req, res) {
     Teacher.find({/* All */}, (err, teachers) => {
+        consoleError('Getting all teachers.');
         res.status(200).send(teachers);
     }).catch((err) => {
         res.status(500).send({ message: 'ERROR listing teachers.' })
