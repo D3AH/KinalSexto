@@ -1,5 +1,9 @@
 'use strict';
 
+var debug = require('debug');
+debug.enable('*');
+var error = debug('teacher:controller');
+
 var Teacher = require('../models/teacher');
 var bcrypt = require('bcrypt-nodejs');
 
@@ -50,7 +54,7 @@ function loginTeacher(req, res) {
                 check ? res.status(200).send(teacher) : res.status(500).send({ message: 'Incorrect authentication.' });
             });
         } else {
-            console.log(teacher);
+            error('Teacher not exist');
             res.status(500).send({ message: 'User not exist.' });
         }
     })
