@@ -1,11 +1,30 @@
 'use strict';
 
+// Debug
 var debug = require('debug');
 var config = require('../config');
-
 debug.enable(config.DEBUG);
-
 var consoleError = debug('teacher:controller');
+
+// Log
+
+const fs = require('fs');
+const path = require('path');
+const winston = require('winston');
+
+const filename = path.join(__dirname, '../logs/teacher.log');
+
+//
+// Create a new winston logger instance with two tranports: Console, and File
+//
+//
+const logger = winston.createLogger({
+  transports: [
+    // show in console
+    // new winston.transports.Console(),
+    new winston.transports.File({ filename })
+  ]
+});
 
 var Teacher = require('../models/teacher');
 var bcrypt = require('bcrypt-nodejs');
@@ -62,6 +81,7 @@ function loginTeacher(req, res) {
         }
     })
     .catch((err) => {
+        logger.error(err);
         res.status(500).send({ message: 'ERROR in login.' })
     })
 }
@@ -71,6 +91,7 @@ function listTeacher(req, res) {
         consoleError('Getting all teachers.');
         res.status(200).send(teachers);
     }).catch((err) => {
+        logger.error(err);
         res.status(500).send({ message: 'ERROR listing teachers.' })
     })
 }
