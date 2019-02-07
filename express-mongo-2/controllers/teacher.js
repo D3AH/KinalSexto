@@ -3,6 +3,9 @@
 var Teacher = require('../models/teacher');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('../services/jwt');
+var multiparty = require('connect-multiparty');
+
+var fs = ('fs');
 
 function saveTeacher(req, res) {
     var params = req.body;
@@ -131,10 +134,42 @@ function uploadImage(req, res) {
         var file_path = req.files.image.path;
         var file_split = file_path.split('\\');
         var file_name = file_split[2];
+
+        var ext_explit = file_name.split('\.');
+        var file_ext = ext_explit[1];
+
+        if(
+            file_ext == 'jpg' ||
+            file_ext == 'jpeg' ||
+            file_ext == 'png' ||
+            file_ext == 'gif' ||
+            file_ext == 'bmp'
+        ) {
+            if(teacherId != req.teacher.sub) {
+                res.status(500).send({
+                    message: 'No authorization'
+                });
+            } else {
+                Teacher.findOneAndUpdate(
+                    { _id: teacherId },
+                    { image: file_name },
+                    { new: true },
+                    (err, teacherUpdate) => {
+                        if(!teacherUpdate) {
+                            res.status(404).send({ message: 'Nothing update' });
+                        } else {
+                            res.status(200).send({ message: 'Teacher update', image: file_name }); 
+                        }
+                }).catch((err) => {
+                    res.status(500).send({ message: 'Error to update.' });
+                });
+            }
+        } else {
+            res.status(200).send({ message: 'Only images.' });
+        }
+    } else {
+        res.status(404).send({ message: 'File required' });
     }
-    res.status(200).send({
-        message: file_name
-    });
 }
 
 module.exports = {
