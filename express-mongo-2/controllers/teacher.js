@@ -2,11 +2,13 @@
 
 var Teacher = require('../models/teacher');
 var bcrypt = require('bcrypt-nodejs');
+var jwt = require('../services/jwt');
 
 function saveTeacher(req, res) {
     var params = req.body;
     var teacher = new Teacher(params);
     teacher.role = 'ROLE_TEACHER';
+    teacher.image = null;
 
     // Check if it contains errors.
     if (!teacher.validateSync()) {
@@ -47,7 +49,11 @@ function loginTeacher(req, res) {
     Teacher.findOne({ email: email.toLowerCase() }, (err, teacher) => {
         if(teacher) {
             bcrypt.compare(password, teacher.password, (err, check) => {
-                check ? res.status(200).send(teacher) : res.status(500).send({ message: 'Incorrect authentication.' });
+                if(check) {
+                    params.gettoken ? res.status(200).send({ token: jwt.createToken(teacher) }) : res.status(200).send(teacher);
+                } else {
+                    res.status(500).send({ message: 'Incorrect authentication.' });
+                }
             });
         } else {
             console.log(teacher);
@@ -68,12 +74,62 @@ function listTeacher(req, res) {
 }
 
 function pruebas(req, res) {
-    res.status(200).send({ message: 'Test controller:teacher' });
+    res.status(200).send({
+        message: 'Test controller:teacher',
+        teacher: req.teacher 
+    });
+}
+
+function deleteTeacher(req, res) {
+    var id  = req.body.id;
+    Teacher.findOneAndDelete({ _id: id }, (err, teacher) => {
+        if(!teacher) {
+            res.status(500).send({ message: 'Teacher not found.' });
+        } else {
+            consoleError('Deleting teacher.');
+            res.status(200).send(teacher);
+        }
+    }).catch((err) => {
+        logger.error(err);
+        res.status(500).send({ message: 'ERROR deleting teacher.' })
+    })
+}
+
+function updateTeacher(req, res) {
+    var teacherId = req.params.id;
+    var update = req.body;
+
+    if(teacherId != req.teacher.sub) {
+        console.log(teacherId);
+        // console.log(req.teacher);
+        res.status(500).send({
+            messagge: 'No permission to update.'
+        });
+    } else {
+        Teacher.findOneAndUpdate({ _id: teacherId }, update, { new: true }, (err, teacherUpdate) => {
+            if(!teacherUpdate) {
+                res.status(404).send({
+                    message: 'No update.'
+                });
+            } else {
+                res.status(200).send({
+                    teacher: teacherUpdate
+                });
+            }
+        }).catch((err) => {
+            res.status(500).send({
+                message: 'ERROR UPDATE',
+                error: err
+            });
+        })
+    }
 }
 
 module.exports = {
     pruebas,
     saveTeacher,
     loginTeacher,
-    listTeacher
+    listTeacher,
+    deleteTeacher,
+    updateTeacher
 };
