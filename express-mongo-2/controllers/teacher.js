@@ -100,9 +100,25 @@ function pruebas(req, res) {
     res.status(200).send({ message: 'Test controller:teacher' });
 }
 
+function deleteTeacher(req, res) {
+    var id  = req.body.id;
+    Teacher.findOneAndDelete({ _id: id }, (err, teacher) => {
+        if(!teacher) {
+            res.status(500).send({ message: 'Teacher not found.' });
+        } else {
+            consoleError('Deleting teacher.');
+            res.status(200).send(teacher);
+        }
+    }).catch((err) => {
+        logger.error(err);
+        res.status(500).send({ message: 'ERROR deleting teacher.' })
+    })
+}
+
 module.exports = {
     pruebas,
     saveTeacher,
     loginTeacher,
-    listTeacher
+    listTeacher,
+    deleteTeacher
 };
