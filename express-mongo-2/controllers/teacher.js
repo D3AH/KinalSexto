@@ -5,7 +5,7 @@ var bcrypt = require('bcrypt-nodejs');
 var jwt = require('../services/jwt');
 var multiparty = require('connect-multiparty');
 
-var fs = ('fs');
+var fs = require('fs');
 
 function saveTeacher(req, res) {
     var params = req.body;
@@ -166,6 +166,13 @@ function uploadImage(req, res) {
             }
         } else {
             res.status(200).send({ message: 'Only images.' });
+            fs.unlink(file_path, (err) => {
+                if(err) {
+                    res.status(200).send({ message: 'Extension not allow. File upload dont deleted.' });
+                } else {
+                    res.status(200).send({ message: 'Extension not allow. File upload and deleted.' });
+                }
+            });
         }
     } else {
         res.status(404).send({ message: 'File required' });
