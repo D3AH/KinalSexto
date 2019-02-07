@@ -124,11 +124,25 @@ function updateTeacher(req, res) {
     }
 }
 
+function uploadImage(req, res) {
+    var teacherId = req.params.id;
+
+    if(req.files) {
+        var file_path = req.files.image.path;
+        var file_split = file_path.split('\\');
+        var file_name = file_split[2];
+    }
+    res.status(200).send({
+        message: file_name
+    });
+}
+
 module.exports = {
     pruebas,
     saveTeacher,
     loginTeacher,
     listTeacher,
     deleteTeacher,
-    updateTeacher
+    updateTeacher,
+    uploadImage
 };

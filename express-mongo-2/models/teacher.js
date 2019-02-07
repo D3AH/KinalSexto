@@ -20,6 +20,7 @@ var TeacherSchema = Schema({
         type: String,
         required: [true, 'The password is required.']
     },
+    image: String,
     role: String
 });
 
