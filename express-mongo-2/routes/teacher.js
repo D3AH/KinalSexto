@@ -3,6 +3,9 @@
 var express = require('express');
 var TeacherController = require('../controllers/teacher');
 var md_auth = require('../middlewares/authenticated');
+var multipary = require('connect_multipary');
+
+var md_upload = multipary({ uploadDir: './uploads/teachers' });
 
 var api = express.Router();
 
