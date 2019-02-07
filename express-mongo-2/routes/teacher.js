@@ -11,7 +11,9 @@ api.get('/controller/teacher/all', TeacherController.listTeacher);
 
 api.post('/controller/teacher/add', TeacherController.saveTeacher);
 api.post('/controller/teacher/login', TeacherController.loginTeacher);
-api.post('/controller/teacher/delete', TeacherController.deleteTeacher);
+
 api.put('/controller/teacher/update/:id', md_auth.ensureAut, TeacherController.updateTeacher);
+
+api.delete('/controller/teacher/delete', TeacherController.deleteTeacher);
 
 module.exports = api;
