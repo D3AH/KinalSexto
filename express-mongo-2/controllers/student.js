@@ -1,7 +1,13 @@
 'use strict';
 
+var Student = require('../models/student');
+
 function test(req, res) {
-    res.status(200).send({ message: 'Test student controller' });
+    Student.find({/* All */}, (error, students) => {
+        res.status(200).send({ students });
+    }).cath((err) => {
+        res.status(500).send({ message: 'Students internal error' });
+    });
 }
 
 module.exports = {

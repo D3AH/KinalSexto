@@ -16,7 +16,7 @@ var TeacherSchema = Schema({
         required: [true, 'The surname is required.']
     },
     identity: {
-        type: String,
+        type: Number,
         required: [true, 'The surname is required.']
     },
     career: {
