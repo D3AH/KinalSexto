@@ -11,6 +11,7 @@ var api = express.Router();
 
 api.get('/controller/teacher', md_auth.ensureAut ,TeacherController.pruebas);
 api.get('/controller/teacher/all', TeacherController.listTeacher);
+api.get('/controller/teacher/image', TeacherController.getImage);
 
 api.post('/controller/teacher/add', TeacherController.saveTeacher);
 api.post('/controller/teacher/login', TeacherController.loginTeacher);

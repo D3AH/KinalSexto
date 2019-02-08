@@ -6,6 +6,7 @@ var jwt = require('../services/jwt');
 var multiparty = require('connect-multiparty');
 
 var fs = require('fs');
+var path = require('path');
 
 function saveTeacher(req, res) {
     var params = req.body;
@@ -179,6 +180,24 @@ function uploadImage(req, res) {
     }
 }
 
+function getImage(req, res) {
+     var teacherId = req.body.id;
+
+     Teacher.findOne({ _id: teacherId }, (err, teacher) => {
+        var image = teacher.image;
+        var image_path = path.format({
+            dir: './uploads/teachers',
+            base: image
+        });
+        var img = fs.readFileSync(image_path);
+        res.format({
+            'image/gif': () => {
+                res.status(200).send(img);
+            }
+        })
+     });
+}
+
 module.exports = {
     pruebas,
     saveTeacher,
@@ -186,5 +205,6 @@ module.exports = {
     listTeacher,
     deleteTeacher,
     updateTeacher,
-    uploadImage
+    uploadImage,
+    getImage
 };
