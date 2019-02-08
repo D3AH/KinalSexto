@@ -7,6 +7,7 @@ var app = express();
 
 // Import routes
 var teacher_routes = require('./routes/teacher');
+var student_routes = require('./routes/student');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -14,6 +15,7 @@ app.use(bodyParser.json());
 
 // Add routes
 app.use('/v1/', teacher_routes);
+app.use('/v1/', student_routes);
 
 // CORS
 app.use((req, res, next) => {
