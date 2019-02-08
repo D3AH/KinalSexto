@@ -8,6 +8,13 @@ var multiparty = require('connect-multiparty');
 var fs = require('fs');
 var path = require('path');
 
+function pruebas(req, res) {
+    res.status(200).send({
+        message: 'Test controller:teacher',
+        teacher: req.teacher 
+    });
+}
+
 function saveTeacher(req, res) {
     var params = req.body;
     var teacher = new Teacher(params);
@@ -75,13 +82,6 @@ function listTeacher(req, res) {
     }).catch((err) => {
         res.status(500).send({ message: 'ERROR listing teachers.' })
     })
-}
-
-function pruebas(req, res) {
-    res.status(200).send({
-        message: 'Test controller:teacher',
-        teacher: req.teacher 
-    });
 }
 
 function deleteTeacher(req, res) {
@@ -189,12 +189,18 @@ function getImage(req, res) {
             dir: './uploads/teachers',
             base: image
         });
-        var img = fs.readFileSync(image_path);
-        res.format({
-            'image/gif': () => {
-                res.status(200).send(img);
+        fs.exists(image_path, function(exists) {
+            if(exists) {
+                res.sendFile(path.resolve(image_path));
+            } else {
+                res.status(404).send({ message: 'File not found.'});
             }
         })
+        // res.format({
+        //     'image/gif': () => {
+        //         res.status(200).send(img);
+        //     }
+        // });
      });
 }
 
