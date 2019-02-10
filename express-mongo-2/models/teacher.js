@@ -14,13 +14,16 @@ var TeacherSchema = Schema({
         required: [true, 'The surname is required.']
     },
     email: {
-        type: mongoose.SchemaTypes.Email
+        type: mongoose.SchemaTypes.Email,
+        index: true
     },
     password: {
         type: String,
         required: [true, 'The password is required.']
     },
     role: String
-});
+}, { collation: { locale: 'es', strength: 2 } });
+
+TeacherSchema.index({ email: 1 });
 
 module.exports = mongoose.model('Teacher', TeacherSchema);
