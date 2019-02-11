@@ -36,7 +36,7 @@ function saveTeacher(req, res) {
 
     // Check if it contains errors.
     if (!teacher.validateSync()) {
-        Teacher.findOne({ email: teacher.email.toLowerCase()}, (err, issetTeacher) => {
+        Teacher.findOne({ email: teacher.email }, (err, issetTeacher) => {
             if(!issetTeacher) {
                 // ENCRYPT PASSWORD
                 bcrypt.hash(params.password, null, null, (error, hash) => {
@@ -70,7 +70,7 @@ function loginTeacher(req, res) {
     var email = params.email;
     var password = params.password;
 
-    Teacher.findOne({ email: email.toLowerCase() }, (err, teacher) => {
+    Teacher.findOne({ email: email }, (err, teacher) => {
         if(teacher) {
             bcrypt.compare(password, teacher.password, (err, check) => {
                 check ? res.status(200).send(teacher) : res.status(500).send({ message: 'Incorrect authentication.' });
