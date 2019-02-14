@@ -45,7 +45,7 @@ function updateEnterprise(req, res) {
 function infoEnterprise(req, res) {
     var enterpriseId = req.params.id;
 
-    Enterprise.findOne({ _id: enterpriseId, legalAgent: req.person.sub }, (err, enterprise) => {
+    Enterprise.find({ _id: enterpriseId, legalAgent: req.person.sub }, (err, enterprise) => {
         if(!enterprise) {
             res.status(404).send({
                 message: 'ERROR. Not found enterprise or not have permissions.'
