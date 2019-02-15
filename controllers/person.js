@@ -1,6 +1,7 @@
 'use strict';
 
 var Person = require('../models/person');
+var Enterprise = require('../models/enterprise');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('../services/jwt');
 
@@ -53,13 +54,17 @@ function loginPerson(req, res) {
         if(person) {
             bcrypt.compare(password, person.password, (err, check) => {
                 if(check) {
-                    params.gettoken ? res.status(200).send({ token: jwt.createToken(person) }) : res.status(200).send(person);
+                    params.gettoken ? res.status(200).send({ token: jwt.createToken(person) }) : Enterprise.find({ legalAgent: person._id }, (err, enterprises) => {
+                        res.status(200).send({
+                            person,
+                            enterprises
+                        });
+                    })
                 } else {
                     res.status(500).send({ message: 'Incorrect authentication.' });
                 }
             });
         } else {
-            console.log(person);
             res.status(500).send({ message: 'User not exist.' });
         }
     })

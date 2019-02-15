@@ -14,7 +14,7 @@ app.use(bodyParser.json());
 
 
 // Add routes
-app.use('/v1/', person_routes);
+app.use('/v1/person/', person_routes);
 app.use('/v1/enterprise/', enterprise_routes);
 
 // CORS
