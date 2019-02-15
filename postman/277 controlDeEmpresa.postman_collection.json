@@ -1,0 +1,427 @@
+{
+	"info": {
+		"_postman_id": "dcc9d4df-52d0-4b78-b1a0-720fb8009f23",
+		"name": "277 controlDeEmpresa",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Person Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "surname",
+							"value": "admin",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "email",
+							"value": "admin@admin.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}person/add",
+					"host": [
+						"{{domain}}person"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person Login",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "email",
+							"value": "b@domain.com",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "123",
+							"type": "text"
+						},
+						{
+							"key": "gettoken",
+							"value": "true",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}person/login",
+					"host": [
+						"{{domain}}person"
+					],
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person Get All",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{domain}}person/all",
+					"host": [
+						"{{domain}}person"
+					],
+					"path": [
+						"all"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise Report",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzY1OTE2ZTAwMmY0MTBmODhhMWZlZTEiLCJuYW1lIjoiYWRtaW4iLCJzdXJuYW1lIjoiYWRtaW4iLCJlbWFpbCI6ImFkbWluQGFkbWluLmNvbSIsInJvbGUiOiJBRE1JTiIsImlhdCI6MTU1MDE2MDQ3NSwiZXhwIjoxNTUyNzUyNDc1fQ.rqfnlOD9h0qd8z_Gv6aQiAy61N1EmVSVsWVA38W9ySM",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{domain}}enterprise/report?",
+					"host": [
+						"{{domain}}enterprise"
+					],
+					"path": [
+						"report"
+					],
+					"query": [
+						{
+							"key": "category",
+							"value": "Hola",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzUzMzUzYzkzOTg0YzI2NWNmMTQ5NjQiLCJuYW1lIjoiSm9zdWUiLCJzdXJuYW1lIjoiSm95IiwiZW1haWwiOiJkZEBkLmNvbSIsImlhdCI6MTU0OTU0NzM3MywiZXhwIjoxNTUyMTM5MzczfQ.FGFHUJvsuMPjfik1tBstrEv1U6rMxKfjrfjwXztPbOU"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "name",
+							"value": "Mario",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}update/5c53353c93984c265cf14964",
+					"host": [
+						"{{domain}}update"
+					],
+					"path": [
+						"5c53353c93984c265cf14964"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise Update",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzY1NzNiMGUwZmFkNTA5NDBlZWFiZWQiLCJuYW1lIjoiUmVwcmVzZW50YW50ZSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJyZXByZXNlbnRhbnRlQGRvbWFpbi5jb20iLCJpYXQiOjE1NTAxNTY3ODMsImV4cCI6MTU1Mjc0ODc4M30.H8LXYfSDVFe5bzblkCt2PBBpOHBUEKXsGgjRURAKFSs"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Hola",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}enterprise/update/5c6580202b16ae0874fe395d",
+					"host": [
+						"{{domain}}enterprise"
+					],
+					"path": [
+						"update",
+						"5c6580202b16ae0874fe395d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise Info",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"type": "text",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzY1N2E5Mjg5ODk1ZDIxZDhjOTBiYjQiLCJuYW1lIjoiUmVwcmVzZW50YW50ZSIsInN1cm5hbWUiOiJCIiwiZW1haWwiOiJiQGRvbWFpbi5jb20iLCJpYXQiOjE1NTAxNTc1NzcsImV4cCI6MTU1Mjc0OTU3N30.-V1gfvk8ypbwE5baJhcjiHADlDKAjpmzLyv6dZu1nLE"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{domain}}enterprise/info/5c6580202b16ae0874fe395d",
+					"host": [
+						"{{domain}}enterprise"
+					],
+					"path": [
+						"info",
+						"5c6580202b16ae0874fe395d"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Person Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5c53353c93984c265cf14964",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}teacher/delete",
+					"host": [
+						"{{domain}}teacher"
+					],
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise Delete",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/x-www-form-urlencoded"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzY1NzNiMGUwZmFkNTA5NDBlZWFiZWQiLCJuYW1lIjoiUmVwcmVzZW50YW50ZSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJyZXByZXNlbnRhbnRlQGRvbWFpbi5jb20iLCJpYXQiOjE1NTAxNTUzMzcsImV4cCI6MTU1Mjc0NzMzN30.TbY4XEFBMGCeHxYnFBjGRCUheC99EvQ9fBBSfJl7Oxk",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "5c65771a6682e30698f6751a",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}enterprise/delete",
+					"host": [
+						"{{domain}}enterprise"
+					],
+					"path": [
+						"delete"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Enterprise Add",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/x-www-form-urlencoded",
+						"type": "text"
+					},
+					{
+						"key": "Authorization",
+						"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzY1OTE0ZDAwMmY0MTBmODhhMWZlZTAiLCJuYW1lIjoiUmVwcmVzZW50YW50ZSIsInN1cm5hbWUiOiJCIiwiZW1haWwiOiJiQGRvbWFpbi5jb20iLCJyb2xlIjoiUk9MRV9QRVJTT04iLCJpYXQiOjE1NTAxNjAzMTUsImV4cCI6MTU1Mjc1MjMxNX0.b735gDDotUzldYolIPpRxdWaX9BIrzKMyswoYlq7-0E",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "title",
+							"value": "Enterprise OMega",
+							"type": "text"
+						},
+						{
+							"key": "description",
+							"value": "Servir",
+							"type": "text"
+						},
+						{
+							"key": "category",
+							"value": "Text",
+							"type": "text"
+						},
+						{
+							"key": "legalAgent",
+							"value": "5c65914d002f410f88a1fee0",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "{{domain}}enterprise/add",
+					"host": [
+						"{{domain}}enterprise"
+					],
+					"path": [
+						"add"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "9fa50165-db33-4e86-a751-2f1509b830bb",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f0da4b8b-6fe6-43d3-a9b8-db20125edf0f",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "47a957f0-e82f-4df2-b6ee-5c9e6268450f",
+			"key": "domain",
+			"value": "localhost:3789/v1/test/",
+			"type": "string"
+		}
+	]
+}
