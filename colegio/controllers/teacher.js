@@ -1,6 +1,8 @@
 'use strict';
 
 var Teacher = require('../models/teacher');
+var Student = require('../models/student');
+var Career = require('../models/career');
 var bcrypt = require('bcrypt-nodejs');
 var jwt = require('../services/jwt');
 var multiparty = require('connect-multiparty');
@@ -82,6 +84,25 @@ function listTeacher(req, res) {
     }).catch((err) => {
         res.status(500).send({ message: 'ERROR listing teachers.' })
     })
+}
+
+function listMyStudents(req, res) {
+    Career.find({ teacher: req.user.sub }, (err, careers) => {
+        if(careers) {
+            res.status(404).send({ message: 'You do not have careers.' })
+        } else if(careers.length) {
+            var students = [];
+            carrers.forEach(carrer => {
+                // Duplicate students possible!
+                students.concat(carrer.students);
+            });
+            res.status(200).send(students);
+        } else {
+            res.status(200).send(careers.students);
+        }
+    }).catch((err) => {
+        res.status(500).send({ message: 'ERROR listing careers.' })
+    });
 }
 
 function deleteTeacher(req, res) {
@@ -212,5 +233,6 @@ module.exports = {
     deleteTeacher,
     updateTeacher,
     uploadActivity,
-    getImage
+    getImage,
+    listMyStudents
 };
