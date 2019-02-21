@@ -19,10 +19,6 @@ var StudentSchema = Schema({
         type: Number,
         required: [true, 'The surname is required.']
     },
-    career: {
-        type: String,
-        required: [true, 'The career is required.']
-    },
     role: {
         type: String
     },

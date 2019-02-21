@@ -12,7 +12,7 @@ function saveStudent(req, res) {
 
     // Check if it contains errors.
     if (!student.validateSync()) {
-        Student.findOne({ email: student.email.toLowerCase()}, (err, issetStudent) => {
+        Student.findOne({ name: student.name.toLowerCase()}, (err, issetStudent) => {
             if(!issetStudent) {
                 student.save()
                     .then((studentStored) => {
@@ -46,7 +46,7 @@ function listStudent(req, res) {
 }
 
 function deleteStudent(req, res) {
-    var id  = req.body.id;
+    var id  = req.params.id;
     Student.findOneAndDelete({ _id: id }, (err, student) => {
         if(!student) {
             res.status(404).send({ message: 'Student not found.' });
@@ -63,30 +63,22 @@ function updateStudent(req, res) {
     var studentId = req.params.id;
     var update = req.body;
 
-    if(studentId != req.user.sub) {
-        console.log(studentId);
-        // console.log(req.student);
-        res.status(500).send({
-            messagge: 'No permission to update.'
-        });
-    } else {
-        Student.findOneAndUpdate({ _id: studentId }, update, { new: true }, (err, studentUpdate) => {
-            if(!studentUpdate) {
-                res.status(404).send({
-                    message: 'No update.'
-                });
-            } else {
-                res.status(200).send({
-                    student: studentUpdate
-                });
-            }
-        }).catch((err) => {
-            res.status(500).send({
-                message: 'ERROR UPDATE',
-                error: err
+    Student.findOneAndUpdate({ _id: studentId }, update, { new: true }, (err, studentUpdate) => {
+        if(!studentUpdate && !err) {
+            res.status(404).send({
+                message: 'No update.'
             });
-        })
-    }
+        } else {
+            res.status(200).send({
+                student: studentUpdate
+            });
+        }
+    }).catch((err) => {
+        res.status(500).send({
+            message: 'ERROR UPDATE',
+            error: err
+        });
+    })
 }
 
 module.exports = {

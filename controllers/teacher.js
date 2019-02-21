@@ -106,7 +106,7 @@ function listMyStudents(req, res) {
 }
 
 function deleteTeacher(req, res) {
-    var id  = req.body.id;
+    var id  = req.params.id;
     Teacher.findOneAndDelete({ _id: id }, (err, teacher) => {
         if(!teacher) {
             res.status(404).send({ message: 'Teacher not found.' });
@@ -123,30 +123,22 @@ function updateTeacher(req, res) {
     var teacherId = req.params.id;
     var update = req.body;
 
-    if(teacherId != req.user.sub) {
-        console.log(teacherId);
-        // console.log(req.teacher);
-        res.status(500).send({
-            messagge: 'No permission to update.'
-        });
-    } else {
-        Teacher.findOneAndUpdate({ _id: teacherId }, update, { new: true }, (err, teacherUpdate) => {
-            if(!teacherUpdate) {
-                res.status(404).send({
-                    message: 'No update.'
-                });
-            } else {
-                res.status(200).send({
-                    teacher: teacherUpdate
-                });
-            }
-        }).catch((err) => {
-            res.status(500).send({
-                message: 'ERROR UPDATE',
-                error: err
+    Teacher.findOneAndUpdate({ _id: teacherId }, update, { new: true }, (err, teacherUpdate) => {
+        if(!teacherUpdate && !err) {
+            res.status(404).send({
+                message: 'No update.'
             });
-        })
-    }
+        } else {
+            res.status(200).send({
+                teacher: teacherUpdate
+            });
+        }
+    }).catch((err) => {
+        res.status(500).send({
+            message: 'ERROR UPDATE',
+            error: err
+        });
+    })
 }
 
 function uploadActivity(req, res) {
@@ -202,7 +194,7 @@ function uploadActivity(req, res) {
 }
 
 function getImage(req, res) {
-     var teacherId = req.body.id;
+     var teacherId = req.params.id;
 
      Teacher.findOne({ _id: teacherId }, (err, teacher) => {
         var image = teacher.image;
