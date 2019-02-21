@@ -6,9 +6,13 @@ function saveCareer(req, res) {
     var params = req.body;
     var career = new Career(params);
 
+    if(career.students === '') {
+        career.students = [];
+    }
+
     // Check if it contains errors.
     if (!career.validateSync()) {
-        Career.findOne({ email: career.email.toLowerCase()}, (err, issetCareer) => {
+        Career.findOne({ name: career.name.toLowerCase()}, (err, issetCareer) => {
             if(!issetCareer) {
                 career.save()
                     .then((careerStored) => {
@@ -42,7 +46,7 @@ function listCareer(req, res) {
 }
 
 function deleteCareer(req, res) {
-    var id  = req.body.id;
+    var id  = req.params.id;
     Career.findOneAndDelete({ _id: id }, (err, career) => {
         if(!career) {
             res.status(404).send({ message: 'Career not found.' });
@@ -57,32 +61,25 @@ function deleteCareer(req, res) {
 
 function updateCareer(req, res) {
     var careerId = req.params.id;
+    console.log(careerId);
     var update = req.body;
 
-    if(careerId != req.user.sub) {
-        console.log(careerId);
-        // console.log(req.career);
-        res.status(500).send({
-            messagge: 'No permission to update.'
-        });
-    } else {
-        Career.findOneAndUpdate({ _id: careerId }, update, { new: true }, (err, careerUpdate) => {
-            if(!careerUpdate) {
-                res.status(404).send({
-                    message: 'No update.'
-                });
-            } else {
-                res.status(200).send({
-                    career: careerUpdate
-                });
-            }
-        }).catch((err) => {
-            res.status(500).send({
-                message: 'ERROR UPDATE',
-                error: err
+    Career.findOneAndUpdate({ _id: careerId }, update, { new: true }, (err, careerUpdate) => {
+        if(!careerUpdate && !err) {
+            res.status(404).send({
+                message: 'No update.'
             });
-        })
-    }
+        } else {
+            res.status(200).send({
+                career: careerUpdate
+            });
+        }
+    }).catch((err) => {
+        res.status(500).send({
+            message: 'ERROR UPDATE',
+            error: err
+        });
+    })
 }
 
 module.exports = {

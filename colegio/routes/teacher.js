@@ -17,7 +17,7 @@ api.post('/teacher/login', TeacherController.loginTeacher);
 
 api.put('/teacher/update/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.updateTeacher);
 
-api.delete('/teacher/delete', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.deleteTeacher);
+api.delete('/teacher/delete/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.deleteTeacher);
 
 api.post('/upload/activity/:id', [md_auth.ensureAut, md_upload],TeacherController.uploadActivity);
 

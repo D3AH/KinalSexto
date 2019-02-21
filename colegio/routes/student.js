@@ -12,6 +12,6 @@ api.post('/student/add', [md_auth.ensureAut, md_auth.ensureAutAdmin], StudentCon
 
 api.put('/student/update/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], StudentController.updateStudent);
 
-api.delete('/student/delete', [md_auth.ensureAut, md_auth.ensureAutAdmin], StudentController.deleteStudent);
+api.delete('/student/delete/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], StudentController.deleteStudent);
 
 module.exports = api;

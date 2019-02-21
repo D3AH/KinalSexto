@@ -11,8 +11,8 @@ var CareerSchema = Schema({
         required: [true, 'The name is required.']
     },
     students: {
-        type: [Schema.Types.ObjectId], 
-        ref: 'Student'
+        type: Array, 
+        default: []
     },
     teacher: {
         type: Schema.Types.ObjectId, 
