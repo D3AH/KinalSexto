@@ -8,6 +8,7 @@ var app = express();
 // Import routes
 var teacher_routes = require('./routes/teacher');
 var student_routes = require('./routes/student');
+var career_routes = require('./routes/career');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -16,6 +17,7 @@ app.use(bodyParser.json());
 // Add routes
 app.use('/v1/', teacher_routes);
 app.use('/v1/', student_routes);
+app.use('/v1/', career_routes);
 
 // CORS
 app.use((req, res, next) => {
