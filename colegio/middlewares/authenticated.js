@@ -32,7 +32,7 @@ function ensureAut(req, res, next) {
 }
 
 function ensureAutAdmin(req, res, next) {
-    (req.user.role === 'ADMIN') ? next() : res.status(400).send({ message: 'Forbidden! Only admins.' });
+    (req.user.role === 'ROLE_ADMIN') ? next() : res.status(400).send({ message: 'Forbidden! Only admins.' });
 }
 
 

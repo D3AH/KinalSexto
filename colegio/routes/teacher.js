@@ -13,7 +13,7 @@ api.get('/teacher/all', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherCont
 api.get('/teacher/students', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.listMyStudents);
 
 api.post('/teacher/add', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.saveTeacher);
-api.post('/teacher/login', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.loginTeacher);
+api.post('/teacher/login', TeacherController.loginTeacher);
 
 api.put('/teacher/update/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.updateTeacher);
 
