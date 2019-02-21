@@ -128,7 +128,7 @@ function updateTeacher(req, res) {
     }
 }
 
-function uploadImage(req, res) {
+function uploadActivity(req, res) {
     var teacherId = req.params.id;
 
     if(req.files) {
@@ -211,6 +211,6 @@ module.exports = {
     listTeacher,
     deleteTeacher,
     updateTeacher,
-    uploadImage,
+    uploadActivity,
     getImage
 };

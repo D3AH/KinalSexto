@@ -9,17 +9,15 @@ var md_upload = multiparty({ uploadDir: './uploads/teachers' });
 
 var api = express.Router();
 
-api.get('/teacher', md_auth.ensureAut ,TeacherController.pruebas);
-api.get('/teacher/all', TeacherController.listTeacher);
-api.get('/teacher/image', TeacherController.getImage);
+api.get('/teacher/all', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.listTeacher);
 
-api.post('/teacher/add', TeacherController.saveTeacher);
-api.post('/teacher/login', TeacherController.loginTeacher);
+api.post('/teacher/add', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.saveTeacher);
+api.post('/teacher/login', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.loginTeacher);
 
-api.put('/teacher/update/:id', md_auth.ensureAut, TeacherController.updateTeacher);
+api.put('/teacher/update/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.updateTeacher);
 
-api.delete('/teacher/delete', TeacherController.deleteTeacher);
+api.delete('/teacher/delete', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.deleteTeacher);
 
-api.post('/upload/image/:id', [md_auth.ensureAut, md_upload],TeacherController.uploadImage);
+api.post('/upload/activity/:id', [md_auth.ensureAut, md_upload],TeacherController.uploadActivity);
 
 module.exports = api;
