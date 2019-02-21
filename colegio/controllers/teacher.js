@@ -102,7 +102,7 @@ function updateTeacher(req, res) {
     var teacherId = req.params.id;
     var update = req.body;
 
-    if(teacherId != req.teacher.sub) {
+    if(teacherId != req.user.sub) {
         console.log(teacherId);
         // console.log(req.teacher);
         res.status(500).send({
@@ -146,7 +146,7 @@ function uploadImage(req, res) {
             file_ext == 'gif' ||
             file_ext == 'bmp'
         ) {
-            if(teacherId != req.teacher.sub) {
+            if(teacherId != req.user.sub) {
                 res.status(500).send({
                     message: 'No authorization'
                 });

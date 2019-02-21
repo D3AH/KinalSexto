@@ -6,7 +6,7 @@ var Teacher = require('./teacher');
 
 require('mongoose-type-email');
 
-var TeacherSchema = Schema({
+var StudentSchema = Schema({
     name: {
         type: String,
         required: [true, 'The name is required.']
@@ -23,6 +23,9 @@ var TeacherSchema = Schema({
         type: String,
         required: [true, 'The career is required.']
     },
+    role: {
+        type: String
+    },
     image: String,
     teacher: {
         type: Schema.Types.ObjectId, 
@@ -30,4 +33,4 @@ var TeacherSchema = Schema({
     }
 });
 
-module.exports = mongoose.model('Student', TeacherSchema);
+module.exports = mongoose.model('Student', StudentSchema);
