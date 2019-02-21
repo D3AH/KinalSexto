@@ -11,6 +11,7 @@ api.get('/career/all', [md_auth.ensureAut, md_auth.ensureAutAdmin], CareerContro
 api.post('/career/add', [md_auth.ensureAut, md_auth.ensureAutAdmin], CareerController.saveCareer);
 
 api.put('/career/update/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], CareerController.updateCareer);
+api.put('/career/add/student/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], CareerController.addStudent);
 
 api.delete('/career/delete/:id', [md_auth.ensureAut, md_auth.ensureAutAdmin], CareerController.deleteCareer);
 

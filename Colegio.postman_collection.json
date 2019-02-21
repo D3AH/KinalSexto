@@ -1,0 +1,709 @@
+{
+	"info": {
+		"_postman_id": "695084c5-58e1-4bd4-be5c-495dfdd4e216",
+		"name": "Colegio",
+		"description": "\t",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Student",
+			"item": [
+				{
+					"name": "Student Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "IN6AM",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "Ficticio",
+									"type": "text"
+								},
+								{
+									"key": "identity",
+									"value": "1",
+									"type": "text"
+								},
+								{
+									"key": "",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/student/add",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"student",
+								"add"
+							]
+						},
+						"description": "Adds a student."
+					},
+					"response": []
+				},
+				{
+					"name": "Student Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "FicticioUpdate",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/student/update/5c6f329207e47d432f45c73e",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"student",
+								"update",
+								"5c6f329207e47d432f45c73e"
+							]
+						},
+						"description": "Updates a student."
+					},
+					"response": []
+				},
+				{
+					"name": "Student Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/student/delete/5c6f329207e47d432f45c73e",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"student",
+								"delete",
+								"5c6f329207e47d432f45c73e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Student List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/student/all",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"student",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Teacher",
+			"item": [
+				{
+					"name": "Teacher Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "AB",
+									"type": "text"
+								},
+								{
+									"key": "surname",
+									"value": "AB",
+									"type": "text"
+								},
+								{
+									"key": "email",
+									"value": "ab@ab.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/teacher/add",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"teacher",
+								"add"
+							]
+						},
+						"description": "Adds a teacher."
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher Login",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "email",
+									"value": "ab@ab.com",
+									"type": "text"
+								},
+								{
+									"key": "password",
+									"value": "123",
+									"type": "text"
+								},
+								{
+									"key": "gettoken",
+									"value": "true",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/teacher/login",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"teacher",
+								"login"
+							]
+						},
+						"description": "Adds a teacher."
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Ficticio",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/teacher/update/5c6f1c3bb691937b7ffc08f0",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"teacher",
+								"update",
+								"5c6f1c3bb691937b7ffc08f0"
+							]
+						},
+						"description": "Updates a teacher."
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							},
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							}
+						],
+						"body": {},
+						"url": {
+							"raw": "{{domain}}/teacher/delete/5c69aeb8d099a54036f1901b",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"teacher",
+								"delete",
+								"5c69aeb8d099a54036f1901b"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/teacher/all",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"teacher",
+								"all"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher List Students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWRhYWQzZGY1YzI0ZDIyZTNkYTUiLCJuYW1lIjoiQUIiLCJzdXJuYW1lIjoiQUIiLCJlbWFpbCI6ImFiQGFiLmNvbSIsInJvbGUiOiJST0xFX1RFQUNIRVIiLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzkyODk4LCJleHAiOjE1NTMzODQ4OTh9.Eil6N0yM3ihbf9eWZP2aZZnVUOY7RSNLwqbwd_UCVgg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/teacher/students",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"teacher",
+								"students"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Teacher All List Students",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/teachers/students",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"teachers",
+								"students"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Career",
+			"item": [
+				{
+					"name": "Career Add",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"type": "text"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "IN6AM",
+									"type": "text"
+								},
+								{
+									"key": "students",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "teacher",
+									"value": "5c69aeb8d099a54036f1901b",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/career/add",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"career",
+								"add"
+							]
+						},
+						"description": "Adds a teacher."
+					},
+					"response": []
+				},
+				{
+					"name": "Career Update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "IN6AMB",
+									"type": "text"
+								},
+								{
+									"key": "students",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "teacher",
+									"value": "5c6f1daad3df5c24d22e3da5",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/career/update/5c6f21b6e542f52ae25c3d64",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"career",
+								"update",
+								"5c6f21b6e542f52ae25c3d64"
+							]
+						},
+						"description": "Updates a teacher."
+					},
+					"response": []
+				},
+				{
+					"name": "Career Add Student",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/x-www-form-urlencoded"
+							},
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "student",
+									"value": "5c6f33286518c443f64585c9",
+									"type": "text"
+								},
+								{
+									"key": "students",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								},
+								{
+									"key": "teacher",
+									"value": "",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{domain}}/career/add/student/5c6f21b6e542f52ae25c3d64",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"career",
+								"add",
+								"student",
+								"5c6f21b6e542f52ae25c3d64"
+							]
+						},
+						"description": "Updates a teacher."
+					},
+					"response": []
+				},
+				{
+					"name": "Career Delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/career/delete/5c6f2217368c6b2b8a7e05de",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"career",
+								"delete",
+								"5c6f2217368c6b2b8a7e05de"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Career List",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiI1YzZmMWQ0MDQ5MmNmZjIzZTc0NDdjMmYiLCJuYW1lIjoiQSIsInN1cm5hbWUiOiJBIiwiZW1haWwiOiJhQGEuY29tIiwicm9sZSI6IlJPTEVfQURNSU4iLCJpbWFnZSI6bnVsbCwiaWF0IjoxNTUwNzg1OTA1LCJleHAiOjE1NTMzNzc5MDV9.--iydJ-NZhLhMeMuC_7j8I165ILatrxNhnCjBmvjkpg",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "{{domain}}/career/all",
+							"host": [
+								"{{domain}}"
+							],
+							"path": [
+								"career",
+								"all"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "12e5dfd9-266e-4788-b6ec-cd1c0b9e58ff",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "328222ae-fbf9-40c2-9a96-e08a97712f5c",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "c83ea957-f64b-4f73-9977-d58c1a43c885",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "2e9993ef-bef7-4c32-8980-a1f6d82381c3",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "260e09c4-072f-4534-a296-d62f2a48d43a",
+			"key": "domain",
+			"value": "http://localhost:3789/v1",
+			"type": "string"
+		}
+	]
+}

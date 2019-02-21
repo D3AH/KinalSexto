@@ -10,7 +10,8 @@ var md_upload = multiparty({ uploadDir: './uploads/teachers' });
 var api = express.Router();
 
 api.get('/teacher/all', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.listTeacher);
-api.get('/teacher/students', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.listMyStudents);
+api.get('/teacher/students', md_auth.ensureAut, TeacherController.listMyStudents);
+api.get('/teachers/students', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.listStudentsByTeacher);
 
 api.post('/teacher/add', [md_auth.ensureAut, md_auth.ensureAutAdmin], TeacherController.saveTeacher);
 api.post('/teacher/login', TeacherController.loginTeacher);

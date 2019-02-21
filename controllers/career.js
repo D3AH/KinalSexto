@@ -82,9 +82,38 @@ function updateCareer(req, res) {
     })
 }
 
+function addStudent(req, res) {
+    var careerId = req.params.id;
+    var student = req.body.student;
+
+    Career.findOne({ _id: careerId }, (err, careerUpdate) => {
+        if(!careerUpdate && !err) {
+            res.status(404).send({
+                message: 'No found.'
+            });
+        } else {
+            careerUpdate.students.push(student);
+            careerUpdate.save()
+            .then((saved) => {
+                res.status(200).send({
+                    career: saved
+                });
+            }).catch((err) => {
+                res.status(500).send(err);
+            });
+        }
+    }).catch((err) => {
+        res.status(500).send({
+            message: 'ERROR UPDATE',
+            error: err
+        });
+    })
+}
+
 module.exports = {
     saveCareer,
     listCareer,
     deleteCareer,
     updateCareer,
+    addStudent
 };

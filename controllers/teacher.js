@@ -88,17 +88,33 @@ function listTeacher(req, res) {
 
 function listMyStudents(req, res) {
     Career.find({ teacher: req.user.sub }, (err, careers) => {
-        if(careers) {
+        if(!careers) {
             res.status(404).send({ message: 'You do not have careers.' })
         } else if(careers.length) {
             var students = [];
-            carrers.forEach(carrer => {
+            careers.forEach(carrer => {
                 // Duplicate students possible!
-                students.concat(carrer.students);
+                students = students.concat(carrer.students);
             });
             res.status(200).send(students);
         } else {
             res.status(200).send(careers.students);
+        }
+    }).catch((err) => {
+        res.status(500).send({ message: 'ERROR listing careers.' })
+    });
+}
+
+function listStudentsByTeacher(req, res) {
+    Career.find({ }, (err, careers) => {
+        if(!careers) {
+            res.status(404).send({ message: 'You do not have careers.' })
+        } else {
+            var result = {};
+            careers.forEach((career) => {
+                result[career.teacher] = career.students;
+            });
+            res.status(200).send(result);
         }
     }).catch((err) => {
         res.status(500).send({ message: 'ERROR listing careers.' })
@@ -226,5 +242,6 @@ module.exports = {
     updateTeacher,
     uploadActivity,
     getImage,
-    listMyStudents
+    listMyStudents,
+    listStudentsByTeacher
 };
