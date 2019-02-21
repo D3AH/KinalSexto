@@ -9,7 +9,7 @@ var moment = require('moment');
 
 var secret = 'aslkdjfklanfenpqwrioivhnwd';
 
-exports.ensureAut = function(req, res, next) {
+function ensureAut(req, res, next) {
     if(!req.headers.authorization) {
         return res.status(400).send({ message: 'La petición no tiene autenticación.' })
     }
@@ -31,3 +31,12 @@ exports.ensureAut = function(req, res, next) {
     next();
 }
 
+function ensureAutAdmin(req, res, next) {
+    (req.user.role === 'ADMIN') ? next() : res.status(400).send({ message: 'Forbidden! Only admins.' });
+}
+
+
+module.exports = {
+    ensureAut,
+    ensureAutAdmin
+}
