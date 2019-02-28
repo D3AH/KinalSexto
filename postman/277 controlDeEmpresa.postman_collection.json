@@ -6,7 +6,7 @@
 	},
 	"item": [
 		{
-			"name": "Person Add",
+			"name": "User Add",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -43,9 +43,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{domain}}person/add",
+					"raw": "{{domain}}user/add",
 					"host": [
-						"{{domain}}person"
+						"{{domain}}user"
 					],
 					"path": [
 						"add"
@@ -55,7 +55,7 @@
 			"response": []
 		},
 		{
-			"name": "Person Login",
+			"name": "User Login",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -87,9 +87,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{domain}}person/login",
+					"raw": "{{domain}}user/login",
 					"host": [
-						"{{domain}}person"
+						"{{domain}}user"
 					],
 					"path": [
 						"login"
@@ -99,7 +99,7 @@
 			"response": []
 		},
 		{
-			"name": "Person Get All",
+			"name": "User Get All",
 			"request": {
 				"method": "GET",
 				"header": [],
@@ -108,9 +108,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{domain}}person/all",
+					"raw": "{{domain}}user/all",
 					"host": [
-						"{{domain}}person"
+						"{{domain}}user"
 					],
 					"path": [
 						"all"
@@ -120,7 +120,7 @@
 			"response": []
 		},
 		{
-			"name": "Enterprise Report",
+			"name": "Survey Report",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -135,9 +135,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{domain}}enterprise/report?",
+					"raw": "{{domain}}survey/report?",
 					"host": [
-						"{{domain}}enterprise"
+						"{{domain}}survey"
 					],
 					"path": [
 						"report"
@@ -154,7 +154,7 @@
 			"response": []
 		},
 		{
-			"name": "Person Update",
+			"name": "User Update",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -193,7 +193,7 @@
 			"response": []
 		},
 		{
-			"name": "Enterprise Update",
+			"name": "Survey Update",
 			"request": {
 				"method": "PUT",
 				"header": [
@@ -220,9 +220,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{domain}}enterprise/update/5c6580202b16ae0874fe395d",
+					"raw": "{{domain}}survey/update/5c6580202b16ae0874fe395d",
 					"host": [
-						"{{domain}}enterprise"
+						"{{domain}}survey"
 					],
 					"path": [
 						"update",
@@ -233,7 +233,7 @@
 			"response": []
 		},
 		{
-			"name": "Enterprise Info",
+			"name": "Survey Info",
 			"request": {
 				"method": "GET",
 				"header": [
@@ -254,9 +254,9 @@
 					"raw": ""
 				},
 				"url": {
-					"raw": "{{domain}}enterprise/info/5c6580202b16ae0874fe395d",
+					"raw": "{{domain}}survey/info/5c6580202b16ae0874fe395d",
 					"host": [
-						"{{domain}}enterprise"
+						"{{domain}}survey"
 					],
 					"path": [
 						"info",
@@ -267,7 +267,7 @@
 			"response": []
 		},
 		{
-			"name": "Person Delete",
+			"name": "User Delete",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -301,7 +301,7 @@
 			"response": []
 		},
 		{
-			"name": "Enterprise Delete",
+			"name": "Survey Delete",
 			"request": {
 				"method": "DELETE",
 				"header": [
@@ -328,9 +328,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{domain}}enterprise/delete",
+					"raw": "{{domain}}survey/delete",
 					"host": [
-						"{{domain}}enterprise"
+						"{{domain}}survey"
 					],
 					"path": [
 						"delete"
@@ -340,7 +340,7 @@
 			"response": []
 		},
 		{
-			"name": "Enterprise Add",
+			"name": "Survey Add",
 			"request": {
 				"method": "POST",
 				"header": [
@@ -361,7 +361,7 @@
 					"urlencoded": [
 						{
 							"key": "title",
-							"value": "Enterprise OMega",
+							"value": "Survey OMega",
 							"type": "text"
 						},
 						{
@@ -382,9 +382,9 @@
 					]
 				},
 				"url": {
-					"raw": "{{domain}}enterprise/add",
+					"raw": "{{domain}}survey/add",
 					"host": [
-						"{{domain}}enterprise"
+						"{{domain}}survey"
 					],
 					"path": [
 						"add"

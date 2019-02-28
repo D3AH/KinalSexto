@@ -3,7 +3,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var EnterpriseSchema = Schema({
+var SurveySchema = Schema({
     title: {
         type: String,
         required: [true, 'The title is required.']
@@ -18,8 +18,8 @@ var EnterpriseSchema = Schema({
     },
     legalAgent: {
         type: Schema.Types.ObjectId, 
-        ref: 'Person'
+        ref: 'User'
     }
 });
 
-module.exports = mongoose.model('Enterprise', EnterpriseSchema);
+module.exports = mongoose.model('Survey', SurveySchema);

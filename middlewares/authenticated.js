@@ -27,7 +27,7 @@ exports.ensureAut = function(req, res, next) {
             message: 'El token no es valido.'
         });
     }
-    req.person = payload;
+    req.user = payload;
     next();
 }
 

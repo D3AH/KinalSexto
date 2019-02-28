@@ -4,7 +4,7 @@ var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 require('mongoose-type-email');
 
-var PersonSchema = Schema({
+var UserSchema = Schema({
     name: {
         type: String,
         required: [true, 'The name is required.']
@@ -26,4 +26,4 @@ var PersonSchema = Schema({
     }
 });
 
-module.exports = mongoose.model('Person', PersonSchema);
+module.exports = mongoose.model('User', UserSchema);

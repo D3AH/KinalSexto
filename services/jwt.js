@@ -6,13 +6,13 @@ var jwt = require('jwt-simple');
 var moment = require('moment');
 var secret = 'aslkdjfklanfenpqwrioivhnwd';
 
-exports.createToken = function(person) {
+exports.createToken = function(user) {
     var payload = {
-        sub: person._id,
-        name: person.name,
-        surname: person.surname,
-        email: person.email,
-        role: person.role,
+        sub: user._id,
+        name: user.name,
+        surname: user.surname,
+        email: user.email,
+        role: user.role,
         iat: moment().unix(),
         exp: moment().add(30, 'day').unix()
     };

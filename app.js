@@ -6,16 +6,16 @@ var bodyParser = require('body-parser');
 var app = express();
 
 // Import routes
-var person_routes = require('./routes/person');
-var enterprise_routes = require('./routes/enterprise');
+var user_routes = require('./routes/user');
+var survey_routes = require('./routes/survey');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
 
 // Add routes
-app.use('/v1/person/', person_routes);
-app.use('/v1/enterprise/', enterprise_routes);
+app.use('/v1/user/', user_routes);
+app.use('/v1/survey/', survey_routes);
 
 // CORS
 app.use((req, res, next) => {
