@@ -6,6 +6,7 @@
  */
 
 const User = require('../models/user');
+const Survey = require('../models/survey');
 const bcrypt = require('bcrypt-nodejs');
 const jwt = require('../services/jwt');
 const fs = require('fs');
@@ -73,7 +74,14 @@ function loginUser(req, res) {
         if(user) {
             bcrypt.compare(password, user.password, (err, check) => {
                 if(check) {
-                    params.gettoken ? res.status(200).send({ token: jwt.createToken(user) }) : res.status(200).send(user);
+                    params.gettoken ? res.status(200).send({ token: jwt.createToken(user) }) : Survey.find({/* All */}, (err, surveys) => {
+                        var surveysAuthor = surveys.filter((survey) => survey.author == user._id.toString());
+                        var surveysAnswered = surveys.filter((survey) => {
+                            survey = survey.answers.filter((answer) => answer.user == user._id.toString());
+                            return survey.length > 0;
+                        });
+                        res.status(200).send({ surveysAuthor, surveysAnswered });
+                    });
                 } else {
                     res.status(500).send({ message: 'Incorrect authentication.' });
                 }
