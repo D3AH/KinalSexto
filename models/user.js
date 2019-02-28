@@ -19,10 +19,6 @@ var UserSchema = Schema({
     password: {
         type: String,
         required: [true, 'The password is required.']
-    },
-    role: {
-        type: String,
-        required: [true, 'The role is required.']
     }
 });
 

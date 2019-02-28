@@ -7,7 +7,7 @@ var app = require('./app');
 var port = process.env.PORT || 3789;
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost:27017/controlDeEmpresa', { useNewUrlParser: true })
+mongoose.connect('mongodb://localhost:27017/opiniones', { useNewUrlParser: true })
     // Connected to mongo
     .then((err, res) => {
         console.log('Connected to mongo.');

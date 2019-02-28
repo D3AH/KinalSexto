@@ -10,31 +10,30 @@ var api = express.Router();
 /**
  * GET
  */
-api.get('/user/all',
+api.get('/all',
     md_auth.ensureAut,
     UserController.listUsers);
 
 /**
  * POST
  */
-api.post('/user/add',
-    md_auth.ensureAut,
+api.post('/add',
     UserController.addUser);
 
-api.post('/user/login',
+api.post('/login',
     UserController.loginUser);
 
 /**
  * PUT
  */
-api.put('/user/update/:id',
+api.put('/update/:id',
     md_auth.ensureAut,
     UserController.updateUser);
 
 /**
  * DELETE
  */
-api.delete('/user/delete/:id',
+api.delete('/delete/:id',
     md_auth.ensureAut,
     UserController.removeUser);
 

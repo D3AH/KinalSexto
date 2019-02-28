@@ -8,7 +8,7 @@ var secret = 'aslkdjfklanfenpqwrioivhnwd';
 
 exports.createToken = function(user) {
     var payload = {
-        sub: user._id,
+        id: user._id,
         name: user.name,
         surname: user.surname,
         email: user.email,

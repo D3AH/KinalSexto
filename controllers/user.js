@@ -28,7 +28,7 @@ function addUser(req, res) {
             if(users && users.length) {
                 res.status(500).send({ message: 'There is already a user with that email.' });
             } else {
-                bcrypt.hash(params.password, null, null, (error, hash) => {
+                bcrypt.hash(tempUser.password, null, null, (error, hash) => {
                     tempUser.password = hash;
                     tempUser
                     .save()

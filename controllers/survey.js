@@ -20,11 +20,12 @@ const path = require('path');
  */
 function addSurvey(req, res) {
     var tempSurvey = new Survey(req.body);
+    tempSurvey.author = req.user.id;
     var validate = tempSurvey.validateSync();
 
     if(!validate) {
-        Survey.find({ code: tempSurvey.code }, (err, surveys) => {
-            surveys && surveys.length ? res.status(500).send({ message: 'There is already a survey with that code.' }) : tempSurvey
+        Survey.find({ title: tempSurvey.title }, (err, surveys) => {
+            surveys && surveys.length ? res.status(500).send({ message: 'There is already a survey with that title.' }) : tempSurvey
             .save()
             .then((surveySaved) => {
                 surveySaved ? res.status(200).send({ survey: surveySaved }) : res.status(400).send({ message: 'Unexpected error.' });
@@ -65,6 +66,39 @@ function updateSurvey(req, res) {
 }
 
 /**
+ * Adds an answer.
+ *
+ * @param {Object} req     The request
+ * @param {Object} res     The response
+ * @returns     {String|Object}     Status error message || survey updated.
+ */
+function addAnswerSurvey(req, res) {
+    Survey.findById(req.params.id, (err, survey) => {
+        if(survey) {
+            if(!survey.answers.filter((answer) => answer.user == req.user.id).length) {
+                survey.answers.push({
+                    user: req.user.id,
+                    answer: req.body.answer
+                });
+                survey.save()
+                .then((surveySaved) => {
+                    res.status(400).send({ answers: surveySaved.answers });
+                })
+                .catch((err) => err);
+            } else {
+                console.log(req.user.id);
+                console.log(survey.answers.filter((answer) => answer.user == req.user.id));
+                console.log(!survey.answers.filter((answer) => answer.user == req.user.id).length);
+                res.status(402).send({ message: 'Survey already done.' });
+            }
+        } else {
+            res.status(500).send({ message: 'Survey dont found.' });
+        }
+    })
+    .catch((err) => res.status(500).send({ err }));
+}
+
+/**
  * Search surveys.
  *
  * @param {Object} req The request
@@ -99,5 +133,6 @@ module.exports = {
     removeSurvey,
     updateSurvey,
     searchSurvey,
-    listSurveys
+    listSurveys,
+    addAnswerSurvey
 }

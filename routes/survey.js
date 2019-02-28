@@ -10,28 +10,35 @@ var api = express.Router();
 /**
  * GET
  */
-api.get('/survey/all',
+api.get('/all',
     md_auth.ensureAut,
     SurveyController.listSurveys);
 
 /**
  * POST
  */
-api.post('/survey/add',
+api.post('/add',
     md_auth.ensureAut,
     SurveyController.addSurvey);
 
 /**
  * PUT
  */
-api.put('/survey/update/:id',
+api.put('/update/:id',
     md_auth.ensureAut,
     SurveyController.updateSurvey);
 
 /**
+ * PUT
+ */
+api.put('/addAnswer/:id',
+    md_auth.ensureAut,
+    SurveyController.addAnswerSurvey);
+
+/**
  * DELETE
  */
-api.delete('/survey/delete/:id',
+api.delete('/delete/:id',
     md_auth.ensureAut,
     SurveyController.removeSurvey);
 

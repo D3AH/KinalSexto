@@ -6,19 +6,25 @@ var Schema = mongoose.Schema;
 var SurveySchema = Schema({
     title: {
         type: String,
-        required: [true, 'The title is required.']
+        required: [true, 'The title is required.'],
+        index: true,
+        unique: true
     },
     description: {
         type: String,
         required: [true, 'The description is required.']
     },
-    category: {
-        type: String,
-        required: [true, 'The category is required.']
+    answers: {
+        // Virtual
+        type: [{
+            user: { type: Schema.Types.ObjectId,  ref: 'User' },
+            answer: String
+        }],
     },
-    legalAgent: {
+    author: {
         type: Schema.Types.ObjectId, 
-        ref: 'User'
+        ref: 'User',
+        required: true
     }
 });
 
